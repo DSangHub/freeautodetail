@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreeAutoDetail.com — Local trade-ins for dealers. No-cost details for sellers.</title>
+<meta name="description" content="Local sellers get a full detail at no cost. Dealers get inspectable local trade-ins without auction fees. Detail shops get paid, guaranteed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --suds:#F3F7FA;        /* base */
+  --ink:#0E1B26;         /* tire ink */
+  --ink-soft:#3C4E5C;
+  --gloss:#0B5FBE;       /* gloss blue */
+  --gloss-deep:#084A96;
+  --foam:#4EC6B8;        /* foam teal */
+  --amber:#F2A614;       /* wax amber — founding partner */
+  --line:#D6E1E9;
+  --white:#FFFFFF;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  font-family:'Barlow',system-ui,sans-serif;
+  background:var(--suds);color:var(--ink);
+  font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.disp{
+  font-family:'Barlow Condensed',sans-serif;
+  text-transform:uppercase;letter-spacing:.01em;line-height:1.02;
+}
+a{color:var(--gloss)}
+:focus-visible{outline:3px solid var(--gloss);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.eyebrow{
+  font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;
+  letter-spacing:.14em;font-size:15px;color:var(--gloss);margin-bottom:14px;
+}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(243,247,250,.92);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{font-family:'Barlow Condensed';font-weight:800;font-size:24px;text-transform:uppercase;color:var(--ink);text-decoration:none;flex:none}
+.logo em{font-style:normal;color:var(--gloss)}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{font-weight:600;font-size:15px;color:var(--ink-soft);text-decoration:none}
+.nav-links a:hover{color:var(--gloss)}
+.btn{
+  display:inline-block;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;font-size:18px;padding:13px 26px;border-radius:var(--radius);
+  border:2px solid transparent;cursor:pointer;text-decoration:none;text-align:center;
+  transition:transform .12s ease,background .12s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-gloss{background:var(--gloss);color:#fff}
+.btn-gloss:hover{background:var(--gloss-deep)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{filter:brightness(.95)}
+.nav-links .btn{font-size:16px;padding:9px 18px}
+
+/* language toggle */
+.lang-toggle{
+  display:flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;flex:none;background:#fff;
+}
+.lang-toggle button{
+  font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.06em;
+  border:0;background:transparent;color:var(--ink-soft);padding:6px 13px;cursor:pointer;
+}
+.lang-toggle button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{padding:96px 0 72px;background:
+  linear-gradient(180deg,#FFFFFF 0%,var(--suds) 100%);}
+.hero h1{font-size:clamp(52px,8.5vw,104px);font-weight:800;max-width:15ch}
+.hero h1 .u{color:var(--gloss)}
+.hero p.lede{font-size:20px;color:var(--ink-soft);max-width:58ch;margin:26px 0 34px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.loop{
+  margin-top:64px;display:grid;grid-template-columns:repeat(3,1fr);
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;
+}
+.loop div{padding:22px 24px;border-left:1px solid var(--line)}
+.loop div:first-child{border-left:0}
+.loop strong{display:block;font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;font-size:19px;margin-bottom:4px}
+.loop span{color:var(--ink-soft);font-size:15px}
+
+/* ---------- how it works ---------- */
+.how{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how h2{font-size:clamp(36px,5vw,56px);font-weight:800;margin-bottom:44px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{background:var(--suds);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px}
+.step .k{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;background:var(--gloss);color:#fff;
+  font-family:'Barlow Condensed';font-weight:800;font-size:20px;margin-bottom:16px;
+}
+.step h3{font-size:23px;font-weight:700;margin-bottom:8px}
+.step p{font-size:15px;color:var(--ink-soft)}
+.hold-note{
+  margin-top:30px;background:var(--suds);border-left:4px solid var(--foam);
+  border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;font-size:15px;color:var(--ink-soft);
+}
+.hold-note b{color:var(--ink)}
+
+/* ---------- the sticker (signature) ---------- */
+.sticker-sec{background:var(--ink);color:#E8F0F6}
+.sticker-sec .eyebrow{color:var(--foam)}
+.sticker-sec h2{font-size:clamp(36px,5vw,56px);font-weight:800;color:#fff;margin-bottom:12px}
+.sticker-sec .sub{color:#9FB4C2;max-width:58ch;margin-bottom:48px}
+.stickers{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+.sticker{
+  background:#fff;color:var(--ink);border-radius:6px;overflow:hidden;
+  box-shadow:0 18px 44px rgba(0,0,0,.35);
+  -webkit-mask:radial-gradient(circle 7px at 14px 0,transparent 98%,#000) -14px 0/28px 100%;
+          mask:radial-gradient(circle 7px at 14px 0,transparent 98%,#000) -14px 0/28px 100%;
+}
+.sticker header{padding:22px 26px 14px;border-bottom:2px solid var(--ink)}
+.sticker header .tag{font-family:'Barlow Condensed';font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.sticker header h3{font-size:30px;font-weight:800;margin-top:2px}
+.sticker.win header h3{color:var(--gloss)}
+.sticker table{width:100%;border-collapse:collapse;font-size:15px}
+.sticker td{padding:13px 26px;border-bottom:1px dashed var(--line)}
+.sticker td:last-child{text-align:right;font-weight:600;white-space:nowrap}
+.sticker tfoot td{
+  border-bottom:0;border-top:2px solid var(--ink);
+  font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:22px;padding:16px 26px;
+}
+.sticker.win tfoot td:last-child{color:var(--gloss)}
+.sticker .foot{padding:0 26px 22px;font-size:13px;color:var(--ink-soft)}
+.save-band{
+  margin-top:40px;text-align:center;font-family:'Barlow Condensed';font-weight:800;
+  text-transform:uppercase;font-size:clamp(24px,3.4vw,36px);color:#fff;
+}
+.save-band em{font-style:normal;color:var(--foam)}
+
+/* ---------- founding partner ---------- */
+.founding{background:var(--amber)}
+.founding .card{
+  background:#fff;border-radius:var(--radius);padding:44px;max-width:860px;margin:0 auto;
+  box-shadow:0 14px 36px rgba(14,27,38,.18);
+}
+.founding .eyebrow{color:#A66E00}
+.founding h2{font-size:clamp(34px,4.6vw,50px);font-weight:800;margin-bottom:12px}
+.founding p.sub{color:var(--ink-soft);margin-bottom:30px;max-width:60ch}
+.perks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.perk{
+  font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;font-size:15px;
+  letter-spacing:.05em;background:var(--suds);border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px;color:var(--ink-soft);
+}
+
+/* ---------- forms ---------- */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-weight:600;font-size:14px;color:var(--ink)}
+label .req{color:var(--gloss)}
+input[type=text],input[type=email],input[type=tel],select,textarea{
+  font-family:'Barlow';font-size:16px;padding:12px 14px;border:1.5px solid var(--line);
+  border-radius:8px;background:#fff;color:var(--ink);width:100%;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gloss);outline:none;box-shadow:0 0 0 3px rgba(11,95,190,.15)}
+textarea{resize:vertical;min-height:90px}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-soft)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--gloss);flex:none}
+.form-msg{margin-top:16px;padding:14px 18px;border-radius:8px;font-weight:600;display:none}
+.form-msg.ok{display:block;background:#E4F6EF;color:#0C6B47;border:1px solid #9ADBBE}
+.form-msg.err{display:block;background:#FBEAEA;color:#9B2222;border:1px solid #EBB4B4}
+.signup{background:#fff;border-top:1px solid var(--line)}
+.signup h2{font-size:clamp(34px,4.6vw,50px);font-weight:800;margin-bottom:10px}
+.signup .sub{color:var(--ink-soft);margin-bottom:34px;max-width:62ch}
+.signup form{max-width:860px}
+.form-actions{margin-top:26px}
+.req-docs{
+  background:var(--suds);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 22px;margin-bottom:26px;font-size:15px;color:var(--ink-soft);
+}
+.req-docs b{color:var(--ink)}
+
+/* ---------- terms ---------- */
+.terms{background:var(--ink);color:#9FB4C2;font-size:14px}
+.terms h2{color:#fff;font-size:26px;font-weight:800;margin-bottom:18px}
+.terms li{margin:0 0 10px 18px}
+.terms b{color:#E8F0F6}
+footer{background:var(--ink);border-top:1px solid #22394B;color:#7E93A3;font-size:14px;padding:26px 0}
+.foot-in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#B9CCDA;text-decoration:none}
+
+@media (max-width:860px){
+  section{padding:64px 0}
+  .steps{grid-template-columns:1fr 1fr}
+  .stickers{grid-template-columns:1fr}
+  .loop{grid-template-columns:1fr}
+  .loop div{border-left:0;border-top:1px solid var(--line)}
+  .loop div:first-child{border-top:0}
+  .form-grid{grid-template-columns:1fr}
+  .nav-links a:not(.btn){display:none}
+  .founding .card{padding:30px 22px}
+}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">Free<em>Auto</em>Detail<span style="color:var(--ink-soft)">.com</span></a>
+    <div class="nav-links">
+      <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#math" data-i18n="nav.math">The math</a>
+      <a href="#dealers" data-i18n="nav.dealers">Dealers</a>
+      <a href="#shops" data-i18n="nav.shops">Detail shops</a>
+      <a class="btn btn-amber" href="#founding" data-i18n="nav.founding">Founding Partner</a>
+      <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+        <button type="button" id="lang-en" aria-pressed="true" onclick="setLang('en')">EN</button>
+        <button type="button" id="lang-es" aria-pressed="false" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Vehicle acquisition for auto dealers</p>
+    <h1 data-i18n-html="hero.h1">Local trade-ins.<br><span class="u">Zero auction fees.</span></h1>
+    <p class="lede" data-i18n="hero.lede">Local sellers get a full detail at no cost at a participating shop. If they sell or trade the vehicle to a participating dealer within 30 days, the dealer covers the detail — and gets a clean, local, inspectable car without ever touching an auction lane.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gloss" href="#dealers" data-i18n="hero.ctaDealer">Sign up as a dealer</a>
+      <a class="btn btn-line" href="#shops" data-i18n="hero.ctaShop">Sign up as a detail shop</a>
+    </div>
+    <div class="loop">
+      <div><strong data-i18n="loop.sellers.t">Sellers</strong><span data-i18n="loop.sellers.d">Get a $150–$300 full detail at no cost — a card hold covers it only if they don't trade within 30 days.</span></div>
+      <div><strong data-i18n="loop.shops.t">Detail shops</strong><span data-i18n="loop.shops.d">Guaranteed payment on every job — from the dealer or the card hold. New customers walk in the door.</span></div>
+      <div><strong data-i18n="loop.dealers.t">Dealers</strong><span data-i18n="loop.dealers.d">First look at fresh local inventory, inspected at your own shop. No lanes, no transport, no fees.</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="how.eyebrow">The 30-day loop</p>
+    <h2 data-i18n="how.h2">How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="k">1</span><h3 data-i18n="step1.t">Seller books a no-cost detail</h3><p data-i18n="step1.d">A local owner planning to sell or trade books a full detail at a participating shop. A credit card hold covers the detail price for 30 days.</p></div>
+      <div class="step"><span class="k">2</span><h3 data-i18n="step2.t">The detail completes</h3><p data-i18n="step2.d">The shop does its normal full detail. Founding Partner dealers get first notification the moment it's done — year, make, model, and area.</p></div>
+      <div class="step"><span class="k">3</span><h3 data-i18n="step3.t">Dealer inspects locally</h3><p data-i18n="step3.d">Interested dealers invite the seller in. You inspect a freshly detailed car at your own shop, on your own lift, on your own terms.</p></div>
+      <div class="step"><span class="k">4</span><h3 data-i18n="step4.t">Deal closes, dealer pays</h3><p data-i18n="step4.d">If the seller trades in or sells to a participating dealer within 30 days, that dealer pays the detail plus a $150 referral fee. The seller's hold is released.</p></div>
+    </div>
+    <div class="hold-note" data-i18n-html="how.hold"><b>If no deal happens in 30 days:</b> the seller's card hold captures the detail price, the shop is still paid in full, and the seller keeps a professionally detailed car. No one goes unpaid.</div>
+  </div>
+</section>
+
+<!-- THE STICKER (signature) -->
+<section class="sticker-sec" id="math">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="math.eyebrow">Read the sticker</p>
+    <h2 data-i18n="math.h2">Auction car vs. FreeAutoDetail car</h2>
+    <p class="sub" data-i18n="math.sub">Same acquisition, two very different invoices. Average per-car auction cost runs $800–$1,000 before the car even reaches your lot.</p>
+    <div class="stickers">
+      <div class="sticker">
+        <header><span class="tag" data-i18n="stkA.tag">Acquisition sticker — the old way</span><h3 data-i18n="stkA.h3">Auction lane</h3></header>
+        <table>
+          <tbody>
+            <tr><td data-i18n="stkA.r1">Buy fee</td><td class="num">$400–$600</td></tr>
+            <tr><td data-i18n="stkA.r2">Transport to your lot</td><td class="num">$150–$300</td></tr>
+            <tr><td data-i18n="stkA.r3">Third-party inspection / PSI</td><td class="num">$100–$150</td></tr>
+            <tr><td data-i18n="stkA.r4">Time in lanes, arbitration risk</td><td data-i18n="stkA.r4v">Yours to eat</td></tr>
+            <tr><td data-i18n="stkA.r5">Condition when it lands</td><td data-i18n="stkA.r5v">Sight mostly unseen</td></tr>
+          </tbody>
+          <tfoot><tr><td data-i18n="stk.total">Typical all-in</td><td class="num">$800–$1,000</td></tr></tfoot>
+        </table>
+        <p class="foot" data-i18n="stkA.foot">Per car, before recon — on a vehicle you couldn't put on your own lift first.</p>
+      </div>
+      <div class="sticker win">
+        <header><span class="tag" data-i18n="stkB.tag">Acquisition sticker — FreeAutoDetail</span><h3 data-i18n="stkB.h3">Local trade</h3></header>
+        <table>
+          <tbody>
+            <tr><td data-i18n="stkB.r1">Full detail (only if you buy the car)</td><td class="num">$150–$300</td></tr>
+            <tr><td data-i18n="stkB.r2">FreeAutoDetail referral fee</td><td class="num">$150</td></tr>
+            <tr><td data-i18n="stkB.r3">Transport</td><td data-i18n="stkB.r3v">Seller drives it in</td></tr>
+            <tr><td data-i18n="stkB.r4">Inspection</td><td data-i18n="stkB.r4v">Your shop, your techs</td></tr>
+            <tr><td data-i18n="stkB.r5">Condition</td><td data-i18n="stkB.r5v">Freshly detailed</td></tr>
+          </tbody>
+          <tfoot><tr><td data-i18n="stk.total2">Typical all-in</td><td class="num">$300–$450</td></tr></tfoot>
+        </table>
+        <p class="foot" data-i18n="stkB.foot">You pay only when a deal closes. No deal, no cost to the dealer.</p>
+      </div>
+    </div>
+    <p class="save-band" data-i18n-html="math.save">Save roughly <em class="num">$500 or more per car</em> — and skip the lanes entirely.</p>
+  </div>
+</section>
+
+<!-- FOUNDING PARTNER -->
+<section class="founding" id="founding">
+  <div class="wrap">
+    <div class="card">
+      <p class="eyebrow" data-i18n="fp.eyebrow">Limited to early markets</p>
+      <h2 data-i18n="fp.h2">Become a Founding Partner</h2>
+      <p class="sub" data-i18n-html="fp.sub">Founding Partners get <b>first notification the moment a detail completes</b> in their area — before the broader dealer network sees the vehicle. First look means first call on the freshest local inventory.</p>
+      <div class="perks">
+        <span class="perk" data-i18n="fp.perk1">First notification on completed details</span>
+        <span class="perk" data-i18n="fp.perk2">Priority in your market</span>
+        <span class="perk" data-i18n="fp.perk3">Founding rate locked in</span>
+      </div>
+      <form id="foundingForm" novalidate>
+        <div class="form-grid">
+          <div class="field"><label for="fp-biz"><span data-i18n="lbl.business">Business name</span> <span class="req">*</span></label><input type="text" id="fp-biz" name="businessName" autocomplete="organization" required></div>
+          <div class="field"><label for="fp-type"><span data-i18n="lbl.signingAs">I'm signing up as</span> <span class="req">*</span></label>
+            <select id="fp-type" name="partnerType"><option value="dealer" data-i18n="opt.dealer">Auto dealer</option><option value="detail_shop" data-i18n="opt.shop">Detail shop</option></select></div>
+          <div class="field"><label for="fp-name"><span data-i18n="lbl.contact">Contact name</span> <span class="req">*</span></label><input type="text" id="fp-name" name="contactName" autocomplete="name" required></div>
+          <div class="field"><label for="fp-email"><span data-i18n="lbl.email">Email</span> <span class="req">*</span></label><input type="email" id="fp-email" name="email" autocomplete="email" required></div>
+          <div class="field"><label for="fp-phone"><span data-i18n="lbl.phone">Phone</span> <span class="req">*</span></label><input type="tel" id="fp-phone" name="phone" autocomplete="tel" required></div>
+          <div class="field"><label for="fp-radius" data-i18n="lbl.radius">Notify me within (miles)</label>
+            <select id="fp-radius" name="notifyRadiusMiles"><option>10</option><option selected>25</option><option>50</option><option>100</option></select></div>
+          <div class="field"><label for="fp-city"><span data-i18n="lbl.city">City</span> <span class="req">*</span></label><input type="text" id="fp-city" name="city" autocomplete="address-level2" required></div>
+          <div class="field"><label for="fp-state"><span data-i18n="lbl.state">State</span> <span class="req">*</span></label><input type="text" id="fp-state" name="state" autocomplete="address-level1" required></div>
+        </div>
+        <div class="form-actions"><button class="btn btn-amber" type="submit" data-i18n="fp.btn">Claim Founding Partner status</button></div>
+        <div class="form-msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- DEALER SIGNUP -->
+<section class="signup" id="dealers">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="dl.eyebrow">For auto dealers</p>
+    <h2 data-i18n="dl.h2">Dealer signup</h2>
+    <p class="sub" data-i18n="dl.sub">Get notified when local sellers complete a detail near you. Inspect at your shop, buy what you like, and pay only when a deal closes: the detail ($150–$300) plus our $150 referral fee.</p>
+    <form id="dealerForm" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="d-biz"><span data-i18n="lbl.dealership">Dealership name</span> <span class="req">*</span></label><input type="text" id="d-biz" name="dealershipName" autocomplete="organization" required></div>
+        <div class="field"><label for="d-name"><span data-i18n="lbl.contact">Contact name</span> <span class="req">*</span></label><input type="text" id="d-name" name="contactName" autocomplete="name" required></div>
+        <div class="field"><label for="d-email"><span data-i18n="lbl.email">Email</span> <span class="req">*</span></label><input type="email" id="d-email" name="email" autocomplete="email" required></div>
+        <div class="field"><label for="d-phone"><span data-i18n="lbl.phone">Phone</span> <span class="req">*</span></label><input type="tel" id="d-phone" name="phone" autocomplete="tel" required></div>
+        <div class="field"><label for="d-city"><span data-i18n="lbl.city">City</span> <span class="req">*</span></label><input type="text" id="d-city" name="city" required></div>
+        <div class="field"><label for="d-state"><span data-i18n="lbl.state">State</span> <span class="req">*</span></label><input type="text" id="d-state" name="state" required></div>
+        <div class="field"><label for="d-lic" data-i18n="lbl.dealerLic">Dealer license #</label><input type="text" id="d-lic" name="dealerLicense"></div>
+        <div class="field"><label for="d-vol" data-i18n="lbl.monthly">Vehicles acquired per month</label>
+          <select id="d-vol" name="monthlyAcquisitions"><option>1–10</option><option>11–25</option><option>26–50</option><option>50+</option></select></div>
+        <div class="field full"><label for="d-notes" data-i18n="lbl.notes">Anything we should know?</label><textarea id="d-notes" name="notes" data-i18n-ph="ph.notes" placeholder="Makes you're hunting for, price ranges, multiple rooftops…"></textarea></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-gloss" type="submit" data-i18n="dl.btn">Apply as a dealer</button></div>
+      <div class="form-msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- DETAIL SHOP SIGNUP -->
+<section class="signup" id="shops" style="background:var(--suds)">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="sh.eyebrow">For detail shops</p>
+    <h2 data-i18n="sh.h2">Detail shop signup</h2>
+    <p class="sub" data-i18n="sh.sub">Every FreeAutoDetail job is guaranteed payment at your full detail price — from the buying dealer, or from the seller's card hold if no deal closes in 30 days. Fill your slow days with new local customers.</p>
+    <div class="req-docs" data-i18n-html="sh.reqdocs"><b>Required to participate:</b> current general liability insurance and a valid business license. We verify both before your shop goes live.</div>
+    <form id="shopForm" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="s-biz"><span data-i18n="lbl.shopName">Shop name</span> <span class="req">*</span></label><input type="text" id="s-biz" name="shopName" autocomplete="organization" required></div>
+        <div class="field"><label for="s-name"><span data-i18n="lbl.contact">Contact name</span> <span class="req">*</span></label><input type="text" id="s-name" name="contactName" autocomplete="name" required></div>
+        <div class="field"><label for="s-email"><span data-i18n="lbl.email">Email</span> <span class="req">*</span></label><input type="email" id="s-email" name="email" autocomplete="email" required></div>
+        <div class="field"><label for="s-phone"><span data-i18n="lbl.phone">Phone</span> <span class="req">*</span></label><input type="tel" id="s-phone" name="phone" autocomplete="tel" required></div>
+        <div class="field full"><label for="s-addr"><span data-i18n="lbl.address">Street address</span> <span class="req">*</span></label><input type="text" id="s-addr" name="address" autocomplete="street-address" required></div>
+        <div class="field"><label for="s-city"><span data-i18n="lbl.city">City</span> <span class="req">*</span></label><input type="text" id="s-city" name="city" required></div>
+        <div class="field"><label for="s-state"><span data-i18n="lbl.state">State</span> <span class="req">*</span></label><input type="text" id="s-state" name="state" required></div>
+        <div class="field"><label for="s-price" data-i18n="lbl.price">Your full detail price</label>
+          <select id="s-price" name="fullDetailPrice"><option>$150–$200</option><option>$200–$250</option><option>$250–$300</option><option>$300+</option></select></div>
+        <div class="field"><label for="s-carrier" data-i18n="lbl.carrier">Insurance carrier</label><input type="text" id="s-carrier" name="insuranceCarrier"></div>
+        <div class="field"><label for="s-liclic" data-i18n="lbl.bizLic">Business license #</label><input type="text" id="s-liclic" name="licenseNumber"></div>
+        <div class="field full check"><input type="checkbox" id="s-ins" name="hasLiabilityInsurance"><label for="s-ins"><span data-i18n="chk.ins">I confirm this shop carries current general liability insurance and can provide proof of coverage.</span> <span class="req">*</span></label></div>
+        <div class="field full check"><input type="checkbox" id="s-lic2" name="hasBusinessLicense"><label for="s-lic2"><span data-i18n="chk.lic">I confirm this shop holds a valid business license and can provide a copy.</span> <span class="req">*</span></label></div>
+        <div class="field full check"><input type="checkbox" id="s-terms" name="acceptedTerms"><label for="s-terms"><span data-i18n="chk.terms">I understand FreeAutoDetail.com is a referral platform and is not responsible for damages incurred at my shop; my shop's liability insurance covers work performed on-site.</span> <span class="req">*</span></label></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-gloss" type="submit" data-i18n="sh.btn">Apply as a detail shop</button></div>
+      <div class="form-msg" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section class="terms">
+  <div class="wrap">
+    <h2 data-i18n="tm.h2">The fine print, in plain English</h2>
+    <ul>
+      <li data-i18n-html="tm.1"><b>Card hold.</b> Sellers authorize a hold equal to the detail price for 30 days. Trade in or sell to a participating dealer within 30 days and the hold is released — the buying dealer pays the detail. Otherwise the hold captures and the seller pays for their detail.</li>
+      <li data-i18n-html="tm.2"><b>Dealer fees.</b> Participating dealers pay only when a deal closes: the actual detail price ($150–$300) plus a $150 FreeAutoDetail referral fee.</li>
+      <li data-i18n-html="tm.3"><b>Shop requirements.</b> Participating detail shops must maintain current general liability insurance and a valid business license at all times.</li>
+      <li data-i18n-html="tm.4"><b>Liability.</b> FreeAutoDetail.com is a referral and notification platform. It does not perform detailing services and is not responsible for damages incurred at participating detail shops. Claims for on-site damage are handled by the shop and its liability insurance.</li>
+      <li data-i18n-html="tm.5"><b>No purchase obligation.</b> Dealers are never obligated to buy, and sellers are never obligated to sell. The 30-day window simply decides who pays for the detail.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span data-i18n="ft.tag">© 2026 FreeAutoDetail.com — Local cars. Clean deals.</span>
+    <span><a href="#founding" data-i18n="ft.founding">Founding Partners</a> · <a href="#dealers" data-i18n="ft.dealers">Dealers</a> · <a href="#shops" data-i18n="ft.shops">Detail shops</a></span>
+  </div>
+</footer>
+
+<script>
+/* ---------------- i18n ---------------- */
+const I18N = {
+  "nav.how":{es:"Cómo funciona"},
+  "nav.math":{es:"Los números"},
+  "nav.dealers":{es:"Concesionarios"},
+  "nav.shops":{es:"Talleres"},
+  "nav.founding":{es:"Socio Fundador"},
+
+  "hero.eyebrow":{es:"Adquisición de vehículos para concesionarios"},
+  "hero.h1":{es:'Autos locales.<br><span class="u">Cero comisiones de subasta.</span>'},
+  "hero.lede":{es:"Los vendedores locales reciben un detailing completo sin costo en un taller participante. Si venden o entregan el vehículo como parte de pago a un concesionario participante dentro de 30 días, el concesionario cubre el detailing — y obtiene un auto local, limpio e inspeccionable sin pisar una subasta."},
+  "hero.ctaDealer":{es:"Regístrese como concesionario"},
+  "hero.ctaShop":{es:"Registre su taller"},
+  "loop.sellers.t":{es:"Vendedores"},
+  "loop.sellers.d":{es:"Reciben sin costo un detailing completo de $150–$300 — una retención en su tarjeta lo cubre solo si no concretan el trato en 30 días."},
+  "loop.shops.t":{es:"Talleres de detailing"},
+  "loop.shops.d":{es:"Pago garantizado en cada trabajo — del concesionario o de la retención de la tarjeta. Clientes nuevos entran por la puerta."},
+  "loop.dealers.t":{es:"Concesionarios"},
+  "loop.dealers.d":{es:"Primer acceso a inventario local recién detallado, inspeccionado en su propio taller. Sin subastas, sin transporte, sin comisiones."},
+
+  "how.eyebrow":{es:"El ciclo de 30 días"},
+  "how.h2":{es:"Cómo funciona"},
+  "step1.t":{es:"El vendedor reserva un detailing sin costo"},
+  "step1.d":{es:"Un propietario local que planea vender o entregar su auto reserva un detailing completo en un taller participante. Una retención en su tarjeta de crédito cubre el precio del detailing por 30 días."},
+  "step2.t":{es:"El detailing se completa"},
+  "step2.d":{es:"El taller realiza su detailing completo habitual. Los concesionarios Socios Fundadores reciben la primera notificación al instante — año, marca, modelo y zona."},
+  "step3.t":{es:"El concesionario inspecciona localmente"},
+  "step3.d":{es:"Los concesionarios interesados invitan al vendedor. Usted inspecciona un auto recién detallado en su propio taller, en su propio elevador, bajo sus propios términos."},
+  "step4.t":{es:"Se cierra el trato, paga el concesionario"},
+  "step4.d":{es:"Si el vendedor vende o entrega el auto a un concesionario participante dentro de 30 días, ese concesionario paga el detailing más una comisión de referido de $150. La retención del vendedor se libera."},
+  "how.hold":{es:"<b>Si no hay trato en 30 días:</b> la retención en la tarjeta del vendedor cobra el precio del detailing, el taller recibe su pago completo y el vendedor conserva un auto profesionalmente detallado. Nadie se queda sin pago."},
+
+  "math.eyebrow":{es:"Lea la etiqueta"},
+  "math.h2":{es:"Auto de subasta vs. auto FreeAutoDetail"},
+  "math.sub":{es:"La misma adquisición, dos facturas muy distintas. El costo promedio por auto en subasta es de $800–$1,000 antes de que el auto llegue a su lote."},
+  "stkA.tag":{es:"Etiqueta de adquisición — el método tradicional"},
+  "stkA.h3":{es:"Subasta"},
+  "stkA.r1":{es:"Comisión de compra"},
+  "stkA.r2":{es:"Transporte a su lote"},
+  "stkA.r3":{es:"Inspección de terceros / PSI"},
+  "stkA.r4":{es:"Tiempo en subasta, riesgo de arbitraje"},
+  "stkA.r4v":{es:"Corre por su cuenta"},
+  "stkA.r5":{es:"Condición al llegar"},
+  "stkA.r5v":{es:"Prácticamente a ciegas"},
+  "stk.total":{es:"Total típico"},
+  "stk.total2":{es:"Total típico"},
+  "stkA.foot":{es:"Por auto, antes del reacondicionamiento — en un vehículo que no pudo subir primero a su propio elevador."},
+  "stkB.tag":{es:"Etiqueta de adquisición — FreeAutoDetail"},
+  "stkB.h3":{es:"Auto local"},
+  "stkB.r1":{es:"Detailing completo (solo si compra el auto)"},
+  "stkB.r2":{es:"Comisión de referido de FreeAutoDetail"},
+  "stkB.r3":{es:"Transporte"},
+  "stkB.r3v":{es:"El vendedor lo trae"},
+  "stkB.r4":{es:"Inspección"},
+  "stkB.r4v":{es:"Su taller, sus técnicos"},
+  "stkB.r5":{es:"Condición"},
+  "stkB.r5v":{es:"Recién detallado"},
+  "stkB.foot":{es:"Paga solo cuando se cierra un trato. Sin trato, no hay costo para el concesionario."},
+  "math.save":{es:'Ahorre aproximadamente <em class="num">$500 o más por auto</em> — y olvídese de las subastas.'},
+
+  "fp.eyebrow":{es:"Limitado a los primeros mercados"},
+  "fp.h2":{es:"Conviértase en Socio Fundador"},
+  "fp.sub":{es:"Los Socios Fundadores reciben <b>la primera notificación en cuanto se completa un detailing</b> en su zona — antes de que la red general de concesionarios vea el vehículo. Ver primero significa llamar primero por el inventario local más fresco."},
+  "fp.perk1":{es:"Primera notificación de detailings completados"},
+  "fp.perk2":{es:"Prioridad en su mercado"},
+  "fp.perk3":{es:"Tarifa fundadora garantizada"},
+  "fp.btn":{es:"Reclamar estatus de Socio Fundador"},
+
+  "dl.eyebrow":{es:"Para concesionarios"},
+  "dl.h2":{es:"Registro de concesionarios"},
+  "dl.sub":{es:"Reciba notificaciones cuando vendedores locales completen un detailing cerca de usted. Inspeccione en su taller, compre lo que le convenga y pague solo cuando se cierre el trato: el detailing ($150–$300) más nuestra comisión de referido de $150."},
+  "dl.btn":{es:"Solicitar como concesionario"},
+
+  "sh.eyebrow":{es:"Para talleres de detailing"},
+  "sh.h2":{es:"Registro de talleres"},
+  "sh.sub":{es:"Cada trabajo de FreeAutoDetail es pago garantizado a su precio de detailing completo — del concesionario comprador, o de la retención de la tarjeta del vendedor si no se cierra un trato en 30 días. Llene sus días lentos con nuevos clientes locales."},
+  "sh.reqdocs":{es:"<b>Requisitos para participar:</b> seguro de responsabilidad civil vigente y licencia comercial válida. Verificamos ambos antes de activar su taller."},
+  "sh.btn":{es:"Solicitar como taller de detailing"},
+
+  "lbl.business":{es:"Nombre del negocio"},
+  "lbl.signingAs":{es:"Me registro como"},
+  "opt.dealer":{es:"Concesionario"},
+  "opt.shop":{es:"Taller de detailing"},
+  "lbl.contact":{es:"Nombre de contacto"},
+  "lbl.email":{es:"Correo electrónico"},
+  "lbl.phone":{es:"Teléfono"},
+  "lbl.radius":{es:"Notificarme dentro de (millas)"},
+  "lbl.city":{es:"Ciudad"},
+  "lbl.state":{es:"Estado"},
+  "lbl.dealership":{es:"Nombre del concesionario"},
+  "lbl.dealerLic":{es:"N.º de licencia de concesionario"},
+  "lbl.monthly":{es:"Vehículos adquiridos por mes"},
+  "lbl.notes":{es:"¿Algo que debamos saber?"},
+  "ph.notes":{es:"Marcas que busca, rangos de precio, varias sucursales…"},
+  "lbl.shopName":{es:"Nombre del taller"},
+  "lbl.address":{es:"Dirección"},
+  "lbl.price":{es:"Su precio de detailing completo"},
+  "lbl.carrier":{es:"Aseguradora"},
+  "lbl.bizLic":{es:"N.º de licencia comercial"},
+  "chk.ins":{es:"Confirmo que este taller cuenta con seguro de responsabilidad civil vigente y puede presentar comprobante de cobertura."},
+  "chk.lic":{es:"Confirmo que este taller tiene una licencia comercial válida y puede presentar una copia."},
+  "chk.terms":{es:"Entiendo que FreeAutoDetail.com es una plataforma de referidos y no es responsable por daños ocurridos en mi taller; el seguro de responsabilidad civil de mi taller cubre el trabajo realizado en el lugar."},
+
+  "tm.h2":{es:"La letra pequeña, en lenguaje claro"},
+  "tm.1":{es:"<b>Retención en la tarjeta.</b> Los vendedores autorizan una retención igual al precio del detailing por 30 días. Si venden o entregan el auto a un concesionario participante dentro de 30 días, la retención se libera — el concesionario comprador paga el detailing. De lo contrario, la retención se cobra y el vendedor paga su detailing."},
+  "tm.2":{es:"<b>Tarifas del concesionario.</b> Los concesionarios participantes pagan solo cuando se cierra un trato: el precio real del detailing ($150–$300) más una comisión de referido de $150 de FreeAutoDetail."},
+  "tm.3":{es:"<b>Requisitos del taller.</b> Los talleres participantes deben mantener en todo momento un seguro de responsabilidad civil vigente y una licencia comercial válida."},
+  "tm.4":{es:"<b>Responsabilidad.</b> FreeAutoDetail.com es una plataforma de referidos y notificaciones. No realiza servicios de detailing y no es responsable por daños ocurridos en los talleres participantes. Los reclamos por daños en el lugar los gestiona el taller y su seguro de responsabilidad civil."},
+  "tm.5":{es:"<b>Sin obligación de compra.</b> Los concesionarios nunca están obligados a comprar, y los vendedores nunca están obligados a vender. La ventana de 30 días solo decide quién paga el detailing."},
+
+  "ft.tag":{es:"© 2026 FreeAutoDetail.com — Autos locales. Tratos limpios."},
+  "ft.founding":{es:"Socios Fundadores"},
+  "ft.dealers":{es:"Concesionarios"},
+  "ft.shops":{es:"Talleres"},
+
+  "msg.network":{en:"Could not reach the server. Check your connection and try again.",
+                 es:"No se pudo conectar con el servidor. Revise su conexión e intente de nuevo."},
+  "title":{en:"FreeAutoDetail.com — Local trade-ins for dealers. No-cost details for sellers.",
+           es:"FreeAutoDetail.com — Autos locales para concesionarios. Detailing sin costo para vendedores."}
+};
+
+let LANG = "en";
+const EN_CACHE = {}; // original English pulled from the markup
+
+function applyLang(lang){
+  LANG = lang;
+  document.documentElement.lang = lang;
+  document.title = I18N["title"][lang] || I18N["title"].en;
+  document.getElementById("lang-en").setAttribute("aria-pressed", lang === "en");
+  document.getElementById("lang-es").setAttribute("aria-pressed", lang === "es");
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const k = el.dataset.i18n;
+    if (!(k in EN_CACHE)) EN_CACHE[k] = el.textContent;
+    el.textContent = lang === "es" && I18N[k] ? I18N[k].es : EN_CACHE[k];
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el => {
+    const k = el.dataset.i18nHtml;
+    if (!(k in EN_CACHE)) EN_CACHE[k] = el.innerHTML;
+    el.innerHTML = lang === "es" && I18N[k] ? I18N[k].es : EN_CACHE[k];
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const k = el.dataset.i18nPh;
+    if (!(k + "|ph" in EN_CACHE)) EN_CACHE[k + "|ph"] = el.placeholder;
+    el.placeholder = lang === "es" && I18N[k] ? I18N[k].es : EN_CACHE[k + "|ph"];
+  });
+}
+function setLang(lang){
+  applyLang(lang);
+  try { localStorage.setItem("fad-lang", lang); } catch (e) { /* private mode */ }
+}
+(function initLang(){
+  let saved = null;
+  try { saved = localStorage.getItem("fad-lang"); } catch (e) {}
+  if (!saved && navigator.language && navigator.language.toLowerCase().startsWith("es")) saved = "es";
+  if (saved === "es") applyLang("es");
+})();
+
+/* ---------------- forms ---------------- */
+function wire(formId, endpoint, map){
+  const form = document.getElementById(formId);
+  const msg = form.querySelector('.form-msg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.className = 'form-msg';
+    const data = { ...map(new FormData(form), form), lang: LANG };
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    try{
+      const r = await fetch(endpoint, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      const j = await r.json();
+      msg.textContent = j.message || I18N["msg.network"][LANG];
+      msg.classList.add(r.ok ? 'ok' : 'err');
+      if (r.ok) form.reset();
+    }catch(err){
+      msg.textContent = I18N["msg.network"][LANG];
+      msg.classList.add('err');
+    }finally{ btn.disabled = false; }
+  });
+}
+const obj = fd => Object.fromEntries(fd.entries());
+wire('foundingForm','/api/signup/founding-partner', fd => obj(fd));
+wire('dealerForm','/api/signup/dealer', fd => obj(fd));
+wire('shopForm','/api/signup/detail-shop', (fd, form) => ({
+  ...obj(fd),
+  hasLiabilityInsurance: form.querySelector('#s-ins').checked,
+  hasBusinessLicense: form.querySelector('#s-lic2').checked,
+  acceptedTerms: form.querySelector('#s-terms').checked
+}));
+</script>
+</body>
+</html>
