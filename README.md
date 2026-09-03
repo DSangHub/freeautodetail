@@ -4,7 +4,8 @@ Vehicle acquisition platform for auto dealers. Local sellers get a full detail a
 
 ## What's included
 
-- `public/index.html` — full landing page: hero, how-it-works, auction-vs-FreeAutoDetail cost comparison, **Founding Partner signup**, dealer signup, and detail shop signup (with required liability insurance / business license attestations and the liability disclaimer), plus plain-English terms.
+- `index.html` — full landing page: hero, how-it-works, auction-vs-FreeAutoDetail cost comparison, **Founding Partner signup**, dealer signup, and detail shop signup (with required liability insurance / business license attestations and the liability disclaimer), plus plain-English terms.
+- `manifest.webmanifest`, `sw.js`, `offline.html`, and `icons/` — installable PWA shell with branded home-screen icons and an offline fallback.
 - `server.js` — Express + SQLite backend with three signup endpoints and a simple admin readout.
 
 ## Run locally
