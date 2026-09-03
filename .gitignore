@@ -4,3 +4,4 @@ freeautodetail.db-shm
 freeautodetail.db-wal
 .env
 .DS_Store
+supabase/.temp/
