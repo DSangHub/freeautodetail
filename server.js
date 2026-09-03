@@ -8,7 +8,12 @@ const Database = require("better-sqlite3");
 const PORT = process.env.PORT || 3000;
 const ADMIN_KEY = process.env.ADMIN_KEY || "change-me";
 
-const db = new Database(path.join(__dirname, "freeautodetail.db"));
+// Vercel's deployed source directory is read-only. /tmp is writable, but
+// ephemeral; use an external database before relying on signups in production.
+const dbPath = process.env.VERCEL
+  ? path.join("/tmp", "freeautodetail.db")
+  : path.join(__dirname, "freeautodetail.db");
+const db = new Database(dbPath);
 try {
   db.pragma("journal_mode = WAL"); // better concurrency where supported
 } catch {
@@ -252,6 +257,10 @@ app.get("/api/admin/signups", (req, res) => {
   });
 });
 
-app.listen(PORT, () =>
-  console.log(`FreeAutoDetail.com running on http://localhost:${PORT}`)
-);
+if (require.main === module) {
+  app.listen(PORT, () =>
+    console.log(`FreeAutoDetail.com running on http://localhost:${PORT}`)
+  );
+}
+
+module.exports = app;
