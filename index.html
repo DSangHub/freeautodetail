@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FreeAutoDetail.com — Local trade-ins for dealers. No-cost details for sellers.</title>
 <meta name="description" content="Local sellers get a full detail at no cost. Dealers get inspectable local trade-ins without auction fees. Detail shops get paid, guaranteed.">
+<meta name="theme-color" content="#0B5FBE">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Free Auto Detail">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -604,6 +611,15 @@ wire('shopForm','/api/signup/detail-shop', (fd, form) => ({
   hasBusinessLicense: form.querySelector('#s-lic2').checked,
   acceptedTerms: form.querySelector('#s-terms').checked
 }));
+
+/* ---------------- installable app ---------------- */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // The website remains fully usable if service workers are unavailable.
+    });
+  });
+}
 </script>
 </body>
 </html>

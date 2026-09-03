@@ -62,8 +62,19 @@ CREATE TABLE IF NOT EXISTS founding_partners (
 `);
 
 const app = express();
+app.disable("x-powered-by");
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  if (req.path === "/sw.js") res.setHeader("Cache-Control", "no-cache");
+  next();
+});
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.get(["/", "/index.html"], (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.get("/manifest.webmanifest", (req, res) => res.sendFile(path.join(__dirname, "manifest.webmanifest")));
+app.get("/sw.js", (req, res) => res.sendFile(path.join(__dirname, "sw.js")));
+app.get("/offline.html", (req, res) => res.sendFile(path.join(__dirname, "offline.html")));
+app.use("/icons", express.static(path.join(__dirname, "icons"), { fallthrough: false }));
 
 // ---------- helpers ----------
 const clean = (v, max = 200) =>

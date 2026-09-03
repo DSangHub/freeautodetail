@@ -1,0 +1,6 @@
+node_modules/
+freeautodetail.db
+freeautodetail.db-shm
+freeautodetail.db-wal
+.env
+.DS_Store
