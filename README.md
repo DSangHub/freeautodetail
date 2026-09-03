@@ -36,6 +36,10 @@ Duplicate emails return `409`. All input is validated and length-limited server-
 
 Data is stored in `freeautodetail.db` (SQLite) next to `server.js`.
 
+On Vercel, the database is created in writable `/tmp` storage so the serverless
+function can start. That storage is temporary and is not suitable for retaining
+production signups; connect a hosted database before marketing the forms.
+
 ## Deploying
 
 Works as-is on Railway, Render, Fly.io, or any Node host:
