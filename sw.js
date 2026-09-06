@@ -1,4 +1,4 @@
-const CACHE = "free-auto-detail-v1";
+const CACHE = "free-auto-detail-v2";
 const APP_SHELL = [
   "/",
   "/index.html",

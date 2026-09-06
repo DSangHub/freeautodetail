@@ -195,6 +195,18 @@ textarea{resize:vertical;min-height:90px}
   padding:18px 22px;margin-bottom:26px;font-size:15px;color:var(--ink-soft);
 }
 .req-docs b{color:var(--ink)}
+.seller-signup{background:#EAF4FF}
+.seller-signup form,.dealer-portal .portal-card{max-width:860px}
+.dealer-portal{background:#fff;border-top:1px solid var(--line)}
+.portal-card{background:var(--suds);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.portal-login{display:flex;gap:12px;align-items:end;flex-wrap:wrap}
+.portal-login .field{flex:1;min-width:240px}
+.lead-list{display:grid;gap:16px;margin-top:24px}
+.lead-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.lead-card h3{font-size:24px;margin-bottom:8px}.lead-card p{color:var(--ink-soft);margin:5px 0}
+.lead-contact{margin-top:14px;padding:14px;background:#E4F6EF;border-radius:8px;color:#0C6B47}
+.lead-lock{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 
 /* ---------- terms ---------- */
 .terms{background:var(--ink);color:#9FB4C2;font-size:14px}
@@ -226,6 +238,7 @@ footer a{color:#B9CCDA;text-decoration:none}
     <a class="logo" href="#top">Free<em>Auto</em>Detail<span style="color:var(--ink-soft)">.com</span></a>
     <div class="nav-links">
       <a href="#how" data-i18n="nav.how">How it works</a>
+      <a href="#sellers" data-i18n="nav.sellers">Sellers</a>
       <a href="#math" data-i18n="nav.math">The math</a>
       <a href="#dealers" data-i18n="nav.dealers">Dealers</a>
       <a href="#shops" data-i18n="nav.shops">Detail shops</a>
@@ -245,6 +258,7 @@ footer a{color:#B9CCDA;text-decoration:none}
     <h1 data-i18n-html="hero.h1">Local trade-ins.<br><span class="u">Zero auction fees.</span></h1>
     <p class="lede" data-i18n="hero.lede">Local sellers get a full detail at no cost at a participating shop. If they sell or trade the vehicle to a participating dealer within 30 days, the dealer covers the detail — and gets a clean, local, inspectable car without ever touching an auction lane.</p>
     <div class="hero-ctas">
+      <a class="btn btn-amber" href="#sellers" data-i18n="hero.ctaSeller">Sell your vehicle</a>
       <a class="btn btn-gloss" href="#dealers" data-i18n="hero.ctaDealer">Sign up as a dealer</a>
       <a class="btn btn-line" href="#shops" data-i18n="hero.ctaShop">Sign up as a detail shop</a>
     </div>
@@ -268,6 +282,37 @@ footer a{color:#B9CCDA;text-decoration:none}
       <div class="step"><span class="k">4</span><h3 data-i18n="step4.t">Deal closes, dealer pays</h3><p data-i18n="step4.d">If the seller trades in or sells to a participating dealer within 30 days, that dealer pays the detail plus a $150 referral fee. The seller's hold is released.</p></div>
     </div>
     <div class="hold-note" data-i18n-html="how.hold"><b>If no deal happens in 30 days:</b> the seller's card hold captures the detail price, the shop is still paid in full, and the seller keeps a professionally detailed car. No one goes unpaid.</div>
+  </div>
+</section>
+
+<!-- SELLER SIGNUP -->
+<section class="seller-signup" id="sellers">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="sl.eyebrow">For local vehicle sellers</p>
+    <h2 data-i18n="sl.h2">Selling your vehicle?</h2>
+    <p class="sub" data-i18n="sl.sub">Tell us about your vehicle. We securely match it with up to three approved Founding Dealers in your area. Dealers see only vehicle and general location details until they pay the $25 lead-access fee.</p>
+    <form id="sellerForm">
+      <div class="form-grid">
+        <div class="field"><label for="sl-first" data-i18n="lbl.first">First name <span class="req">*</span></label><input id="sl-first" name="firstName" type="text" required maxlength="80" autocomplete="given-name"></div>
+        <div class="field"><label for="sl-last" data-i18n="lbl.last">Last name <span class="req">*</span></label><input id="sl-last" name="lastName" type="text" required maxlength="80" autocomplete="family-name"></div>
+        <div class="field"><label for="sl-email" data-i18n="lbl.email">Email <span class="req">*</span></label><input id="sl-email" name="email" type="email" required maxlength="160" autocomplete="email"></div>
+        <div class="field"><label for="sl-phone" data-i18n="lbl.phone">Phone <span class="req">*</span></label><input id="sl-phone" name="phone" type="tel" required maxlength="30" autocomplete="tel"></div>
+        <div class="field"><label for="sl-city" data-i18n="lbl.city">City <span class="req">*</span></label><input id="sl-city" name="city" type="text" required maxlength="80" autocomplete="address-level2"></div>
+        <div class="field"><label for="sl-state" data-i18n="lbl.state">State <span class="req">*</span></label><input id="sl-state" name="state" type="text" required maxlength="30" value="CA" autocomplete="address-level1"></div>
+        <div class="field"><label for="sl-zip" data-i18n="lbl.zip">ZIP code <span class="req">*</span></label><input id="sl-zip" name="zipCode" type="text" required maxlength="10" inputmode="numeric" autocomplete="postal-code"></div>
+        <div class="field"><label for="sl-year" data-i18n="lbl.year">Vehicle year <span class="req">*</span></label><input id="sl-year" name="vehicleYear" type="text" required maxlength="4" inputmode="numeric"></div>
+        <div class="field"><label for="sl-make" data-i18n="lbl.make">Make <span class="req">*</span></label><input id="sl-make" name="vehicleMake" type="text" required maxlength="80" placeholder="Toyota"></div>
+        <div class="field"><label for="sl-model" data-i18n="lbl.model">Model <span class="req">*</span></label><input id="sl-model" name="vehicleModel" type="text" required maxlength="80" placeholder="Camry"></div>
+        <div class="field"><label for="sl-mileage" data-i18n="lbl.mileage">Mileage</label><input id="sl-mileage" name="mileage" type="text" maxlength="10" inputmode="numeric"></div>
+        <div class="field"><label for="sl-condition" data-i18n="lbl.condition">Condition</label><select id="sl-condition" name="vehicleCondition"><option value="Excellent">Excellent</option><option value="Good" selected>Good</option><option value="Fair">Fair</option><option value="Needs work">Needs work</option></select></div>
+        <div class="field full"><label for="sl-timeline" data-i18n="lbl.timeline">When do you plan to sell or trade?</label><select id="sl-timeline" name="sellTimeline"><option value="Within 7 days">Within 7 days</option><option value="Within 30 days" selected>Within 30 days</option><option value="Within 90 days">Within 90 days</option><option value="Just exploring">Just exploring</option></select></div>
+        <div class="field full"><label for="sl-notes" data-i18n="lbl.notesVehicle">Vehicle notes</label><textarea id="sl-notes" name="notes" maxlength="1000" placeholder="Trim, major options, damage, loan payoff, or anything a dealer should know"></textarea></div>
+        <div class="field honeypot" aria-hidden="true"><label for="sl-web">Website</label><input id="sl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="field full"><label class="check"><input id="sl-consent" type="checkbox" required><span data-i18n="sl.consent">I authorize Free Auto Detail to share my contact information with up to three approved Founding Dealers after each dealer pays to unlock the lead. Standard calls or texts may apply.</span></label></div>
+      </div>
+      <div class="form-actions"><button class="btn btn-gloss" type="submit" data-i18n="sl.submit">Securely submit my vehicle</button></div>
+      <div class="form-msg" role="status" aria-live="polite"></div>
+    </form>
   </div>
 </section>
 
@@ -308,6 +353,23 @@ footer a{color:#B9CCDA;text-decoration:none}
       </div>
     </div>
     <p class="save-band" data-i18n-html="math.save">Save roughly <em class="num">$500 or more per car</em> — and skip the lanes entirely.</p>
+  </div>
+</section>
+
+<!-- FOUNDING DEALER PORTAL -->
+<section class="dealer-portal" id="dealer-portal">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="portal.eyebrow">Founding Dealer access</p>
+    <h2 data-i18n="portal.h2">Local seller leads</h2>
+    <p class="sub" data-i18n="portal.sub">Sign in using your approved Founding Dealer email. Review masked vehicle leads free, then pay $25 to unlock a seller’s contact information.</p>
+    <div class="portal-card">
+      <form id="dealerLoginForm" class="portal-login">
+        <div class="field"><label for="portal-email" data-i18n="portal.email">Founding Dealer email</label><input id="portal-email" type="email" required autocomplete="email"></div>
+        <button class="btn btn-gloss" type="submit" data-i18n="portal.login">Email me a secure sign-in link</button>
+      </form>
+      <div id="portalMsg" class="form-msg" role="status" aria-live="polite"></div>
+      <div id="dealerLeads" class="lead-list"></div>
+    </div>
   </div>
 </section>
 
@@ -423,6 +485,7 @@ footer a{color:#B9CCDA;text-decoration:none}
 /* ---------------- i18n ---------------- */
 const I18N = {
   "nav.how":{es:"Cómo funciona"},
+  "nav.sellers":{es:"Vendedores"},
   "nav.math":{es:"Los números"},
   "nav.dealers":{es:"Concesionarios"},
   "nav.shops":{es:"Talleres"},
@@ -432,6 +495,7 @@ const I18N = {
   "hero.h1":{es:'Autos locales.<br><span class="u">Cero comisiones de subasta.</span>'},
   "hero.lede":{es:"Los vendedores locales reciben un detailing completo sin costo en un taller participante. Si venden o entregan el vehículo como parte de pago a un concesionario participante dentro de 30 días, el concesionario cubre el detailing — y obtiene un auto local, limpio e inspeccionable sin pisar una subasta."},
   "hero.ctaDealer":{es:"Regístrese como concesionario"},
+  "hero.ctaSeller":{es:"Venda su vehículo"},
   "hero.ctaShop":{es:"Registre su taller"},
   "loop.sellers.t":{es:"¿Vende su vehículo?"},
   "loop.sellers.d":{es:"Reciba sin costo un detailing completo de $150–$300 — una retención en su tarjeta lo cubre solo si no vende ni entrega el vehículo en 30 días."},
@@ -451,6 +515,27 @@ const I18N = {
   "step4.t":{es:"Se cierra el trato, paga el concesionario"},
   "step4.d":{es:"Si el vendedor vende o entrega el auto a un concesionario participante dentro de 30 días, ese concesionario paga el detailing más una comisión de referido de $150. La retención del vendedor se libera."},
   "how.hold":{es:"<b>Si no hay trato en 30 días:</b> la retención en la tarjeta del vendedor cobra el precio del detailing, el taller recibe su pago completo y el vendedor conserva un auto profesionalmente detallado. Nadie se queda sin pago."},
+
+  "sl.eyebrow":{es:"Para vendedores locales"},
+  "sl.h2":{es:"¿Vende su vehículo?"},
+  "sl.sub":{es:"Cuéntenos sobre su vehículo. Lo conectamos de forma segura con hasta tres Concesionarios Fundadores aprobados en su zona. Solo verán el vehículo y la ubicación general hasta pagar la tarifa de acceso de $25."},
+  "sl.consent":{es:"Autorizo a Free Auto Detail a compartir mi información de contacto con hasta tres Concesionarios Fundadores aprobados después de que cada uno pague para desbloquear el prospecto. Pueden aplicar tarifas normales de llamadas o mensajes."},
+  "sl.submit":{es:"Enviar mi vehículo de forma segura"},
+  "lbl.first":{es:"Nombre *"},
+  "lbl.last":{es:"Apellido *"},
+  "lbl.zip":{es:"Código postal *"},
+  "lbl.year":{es:"Año del vehículo *"},
+  "lbl.make":{es:"Marca *"},
+  "lbl.model":{es:"Modelo *"},
+  "lbl.mileage":{es:"Millaje"},
+  "lbl.condition":{es:"Condición"},
+  "lbl.timeline":{es:"¿Cuándo piensa vender o entregar el vehículo?"},
+  "lbl.notesVehicle":{es:"Notas del vehículo"},
+  "portal.eyebrow":{es:"Acceso para Concesionarios Fundadores"},
+  "portal.h2":{es:"Prospectos locales de vendedores"},
+  "portal.sub":{es:"Inicie sesión con el correo aprobado de su concesionario. Revise gratis los datos limitados del vehículo y pague $25 para desbloquear el contacto del vendedor."},
+  "portal.email":{es:"Correo del Concesionario Fundador"},
+  "portal.login":{es:"Enviarme un enlace seguro"},
 
   "math.eyebrow":{es:"Lea la etiqueta"},
   "math.h2":{es:"Auto de subasta vs. auto FreeAutoDetail"},
@@ -611,6 +696,136 @@ wire('shopForm','/api/signup/detail-shop', (fd, form) => ({
   hasBusinessLicense: form.querySelector('#s-lic2').checked,
   acceptedTerms: form.querySelector('#s-terms').checked
 }));
+wire('sellerForm','/api/signup/seller', (fd, form) => ({
+  ...obj(fd),
+  consentToContact: form.querySelector('#sl-consent').checked
+}));
+
+/* ---------------- Founding Dealer portal ---------------- */
+const DEALER_TOKEN_KEY = 'fad-dealer-token';
+const portalForm = document.getElementById('dealerLoginForm');
+const portalMsg = document.getElementById('portalMsg');
+const dealerLeads = document.getElementById('dealerLeads');
+
+function setPortalMessage(message, ok = true){
+  portalMsg.textContent = message;
+  portalMsg.className = 'form-msg ' + (ok ? 'ok' : 'err');
+}
+
+function addLeadLine(card, label, value){
+  if (value === null || value === undefined || value === '') return;
+  const line = document.createElement('p');
+  const strong = document.createElement('strong');
+  strong.textContent = label + ': ';
+  line.append(strong, document.createTextNode(String(value)));
+  card.appendChild(line);
+}
+
+function renderDealerLeads(payload){
+  dealerLeads.replaceChildren();
+  if (!payload.leads.length){
+    const empty = document.createElement('p');
+    empty.textContent = 'No matched seller leads are available yet.';
+    dealerLeads.appendChild(empty);
+    return;
+  }
+  payload.leads.forEach(lead => {
+    const card = document.createElement('article');
+    card.className = 'lead-card';
+    const title = document.createElement('h3');
+    title.textContent = `${lead.vehicleYear} ${lead.vehicleMake} ${lead.vehicleModel}`;
+    card.appendChild(title);
+    addLeadLine(card, 'Area', `${lead.city}, ${lead.state} ${lead.paymentStatus === 'paid' ? lead.fullZipCode : lead.zipCode}`);
+    addLeadLine(card, 'Mileage', lead.mileage ? Number(lead.mileage).toLocaleString() : 'Not provided');
+    addLeadLine(card, 'Condition', lead.vehicleCondition);
+    addLeadLine(card, 'Selling timeline', lead.sellTimeline);
+    if (lead.paymentStatus === 'paid'){
+      const contact = document.createElement('div');
+      contact.className = 'lead-contact';
+      addLeadLine(contact, 'Seller', `${lead.firstName} ${lead.lastName}`);
+      addLeadLine(contact, 'Phone', lead.phone);
+      addLeadLine(contact, 'Email', lead.email);
+      addLeadLine(contact, 'Notes', lead.notes);
+      card.appendChild(contact);
+    } else {
+      const lock = document.createElement('div');
+      lock.className = 'lead-lock';
+      const note = document.createElement('strong');
+      note.textContent = 'Seller contact is locked';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn btn-amber';
+      button.textContent = 'Unlock lead — $25';
+      button.addEventListener('click', () => startLeadCheckout(lead.matchId, button));
+      lock.append(note, button);
+      card.appendChild(lock);
+    }
+    dealerLeads.appendChild(card);
+  });
+}
+
+async function loadDealerLeads(){
+  const token = localStorage.getItem(DEALER_TOKEN_KEY);
+  if (!token) return;
+  try {
+    const response = await fetch('/api/dealer/leads', { headers: { Authorization: `Bearer ${token}` } });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.message || 'Unable to load leads.');
+    setPortalMessage(`Signed in as ${payload.dealer}.`);
+    renderDealerLeads(payload);
+  } catch (error) {
+    localStorage.removeItem(DEALER_TOKEN_KEY);
+    dealerLeads.replaceChildren();
+    setPortalMessage(error.message, false);
+  }
+}
+
+async function startLeadCheckout(matchId, button){
+  const token = localStorage.getItem(DEALER_TOKEN_KEY);
+  button.disabled = true;
+  try {
+    const response = await fetch('/api/dealer/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ matchId })
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.message || 'Unable to start checkout.');
+    location.href = payload.url;
+  } catch (error) {
+    setPortalMessage(error.message, false);
+    button.disabled = false;
+  }
+}
+
+portalForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const button = portalForm.querySelector('button');
+  button.disabled = true;
+  try {
+    const response = await fetch('/api/dealer/magic-link', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: document.getElementById('portal-email').value })
+    });
+    const payload = await response.json();
+    setPortalMessage(payload.message, response.ok);
+  } catch (error) {
+    setPortalMessage('Could not request the sign-in email. Try again.', false);
+  } finally { button.disabled = false; }
+});
+
+(function captureDealerSession(){
+  const hash = new URLSearchParams(location.hash.slice(1));
+  const token = hash.get('access_token');
+  if (token){
+    localStorage.setItem(DEALER_TOKEN_KEY, token);
+    history.replaceState(null, document.title, location.pathname + location.search + '#dealer-portal');
+  }
+  if (new URLSearchParams(location.search).get('lead_payment') === 'success'){
+    setPortalMessage('Payment received. Your seller contact will unlock as soon as Stripe confirms it.');
+  }
+  loadDealerLeads();
+})();
 
 /* ---------------- installable app ---------------- */
 if ('serviceWorker' in navigator) {
