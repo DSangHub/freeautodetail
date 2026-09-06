@@ -206,6 +206,11 @@ textarea{resize:vertical;min-height:90px}
 .lead-card h3{font-size:24px;margin-bottom:8px}.lead-card p{color:var(--ink-soft);margin:5px 0}
 .lead-contact{margin-top:14px;padding:14px;background:#E4F6EF;border-radius:8px;color:#0C6B47}
 .lead-lock{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.preview-board{background:#F7F2E8;border-top:1px solid var(--line)}
+.preview-board-head{display:flex;justify-content:space-between;gap:18px;align-items:end;flex-wrap:wrap}
+.preview-refresh{font-size:14px;color:var(--ink-soft)}
+.fee-path{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.fee-pill{padding:6px 10px;border-radius:999px;background:#EAF4FF;color:var(--gloss);font-size:13px;font-weight:700}
 .honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 
 /* ---------- terms ---------- */
@@ -239,6 +244,7 @@ footer a{color:#B9CCDA;text-decoration:none}
     <div class="nav-links">
       <a href="#how" data-i18n="nav.how">How it works</a>
       <a href="#sellers" data-i18n="nav.sellers">Sellers</a>
+      <a href="#vehicle-board" data-i18n="nav.board">Vehicle board</a>
       <a href="#math" data-i18n="nav.math">The math</a>
       <a href="#dealers" data-i18n="nav.dealers">Dealers</a>
       <a href="#shops" data-i18n="nav.shops">Detail shops</a>
@@ -277,9 +283,9 @@ footer a{color:#B9CCDA;text-decoration:none}
     <h2 data-i18n="how.h2">How it works</h2>
     <div class="steps">
       <div class="step"><span class="k">1</span><h3 data-i18n="step1.t">Seller books a no-cost detail</h3><p data-i18n="step1.d">A local owner planning to sell or trade books a full detail at a participating shop. A credit card hold covers the detail price for 30 days.</p></div>
-      <div class="step"><span class="k">2</span><h3 data-i18n="step2.t">The detail completes</h3><p data-i18n="step2.d">The shop does its normal full detail. Founding Partner dealers get first notification the moment it's done — year, make, model, and area.</p></div>
+      <div class="step"><span class="k">2</span><h3 data-i18n="step2.t">A private vault record and safe preview</h3><p data-i18n="step2.d">Customer contact stays sealed in Supabase. Founding Dealers receive email and text alerts containing only the year, make, model, and general area.</p></div>
       <div class="step"><span class="k">3</span><h3 data-i18n="step3.t">Dealer inspects locally</h3><p data-i18n="step3.d">Interested dealers invite the seller in. You inspect a freshly detailed car at your own shop, on your own lift, on your own terms.</p></div>
-      <div class="step"><span class="k">4</span><h3 data-i18n="step4.t">Deal closes, dealer pays</h3><p data-i18n="step4.d">If the seller trades in or sells to a participating dealer within 30 days, that dealer pays the detail plus a $150 referral fee. The seller's hold is released.</p></div>
+      <div class="step"><span class="k">4</span><h3 data-i18n="step4.t">Dealer chooses access</h3><p data-i18n="step4.d">An approved dealer may claim the early preview for $25. The protected seller lead is a separate $125 purchase and is the only step that unlocks contact details.</p></div>
     </div>
     <div class="hold-note" data-i18n-html="how.hold"><b>If no deal happens in 30 days:</b> the seller's card hold captures the detail price, the shop is still paid in full, and the seller keeps a professionally detailed car. No one goes unpaid.</div>
   </div>
@@ -290,7 +296,7 @@ footer a{color:#B9CCDA;text-decoration:none}
   <div class="wrap">
     <p class="eyebrow" data-i18n="sl.eyebrow">For local vehicle sellers</p>
     <h2 data-i18n="sl.h2">Selling your vehicle?</h2>
-    <p class="sub" data-i18n="sl.sub">Tell us about your vehicle. We securely match it with up to three approved Founding Dealers in your area. Dealers see only vehicle and general location details until they pay the $25 lead-access fee.</p>
+    <p class="sub" data-i18n="sl.sub">Tell us about your vehicle. Your name, phone, email, exact ZIP, mileage, and notes stay sealed in the Supabase vault. Only the vehicle type and general area appear on the preview board.</p>
     <form id="sellerForm">
       <div class="form-grid">
         <div class="field"><label for="sl-first" data-i18n="lbl.first">First name <span class="req">*</span></label><input id="sl-first" name="firstName" type="text" required maxlength="80" autocomplete="given-name"></div>
@@ -308,7 +314,7 @@ footer a{color:#B9CCDA;text-decoration:none}
         <div class="field full"><label for="sl-timeline" data-i18n="lbl.timeline">When do you plan to sell or trade?</label><select id="sl-timeline" name="sellTimeline"><option value="Within 7 days">Within 7 days</option><option value="Within 30 days" selected>Within 30 days</option><option value="Within 90 days">Within 90 days</option><option value="Just exploring">Just exploring</option></select></div>
         <div class="field full"><label for="sl-notes" data-i18n="lbl.notesVehicle">Vehicle notes</label><textarea id="sl-notes" name="notes" maxlength="1000" placeholder="Trim, major options, damage, loan payoff, or anything a dealer should know"></textarea></div>
         <div class="field honeypot" aria-hidden="true"><label for="sl-web">Website</label><input id="sl-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-        <div class="field full"><label class="check"><input id="sl-consent" type="checkbox" required><span data-i18n="sl.consent">I authorize Free Auto Detail to share my contact information with up to three approved Founding Dealers after each dealer pays to unlock the lead. Standard calls or texts may apply.</span></label></div>
+        <div class="field full"><label class="check"><input id="sl-consent" type="checkbox" required><span data-i18n="sl.consent">I authorize Free Auto Detail to store my information privately, post a non-contact vehicle preview, and release my contact information to no more than three approved dealers only after each pays the separate $125 lead fee. Standard calls or texts may apply.</span></label></div>
       </div>
       <div class="form-actions"><button class="btn btn-gloss" type="submit" data-i18n="sl.submit">Securely submit my vehicle</button></div>
       <div class="form-msg" role="status" aria-live="polite"></div>
@@ -342,12 +348,12 @@ footer a{color:#B9CCDA;text-decoration:none}
         <table>
           <tbody>
             <tr><td data-i18n="stkB.r1">Full detail (only if you buy the car)</td><td class="num">$150–$300</td></tr>
-            <tr><td data-i18n="stkB.r2">FreeAutoDetail referral fee</td><td class="num">$150</td></tr>
+            <tr><td data-i18n="stkB.r2">Protected seller lead</td><td class="num">$125</td></tr>
             <tr><td data-i18n="stkB.r3">Transport</td><td data-i18n="stkB.r3v">Seller drives it in</td></tr>
             <tr><td data-i18n="stkB.r4">Inspection</td><td data-i18n="stkB.r4v">Your shop, your techs</td></tr>
             <tr><td data-i18n="stkB.r5">Condition</td><td data-i18n="stkB.r5v">Freshly detailed</td></tr>
           </tbody>
-          <tfoot><tr><td data-i18n="stk.total2">Typical all-in</td><td class="num">$300–$450</td></tr></tfoot>
+          <tfoot><tr><td data-i18n="stk.total2">Typical all-in</td><td class="num">$275–$425</td></tr></tfoot>
         </table>
         <p class="foot" data-i18n="stkB.foot">You pay only when a deal closes. No deal, no cost to the dealer.</p>
       </div>
@@ -356,12 +362,27 @@ footer a{color:#B9CCDA;text-decoration:none}
   </div>
 </section>
 
+<!-- VEHICLE PREVIEW BOARD -->
+<section class="preview-board" id="vehicle-board">
+  <div class="wrap">
+    <div class="preview-board-head">
+      <div>
+        <p class="eyebrow" data-i18n="board.eyebrow">No customer contact information</p>
+        <h2 data-i18n="board.h2">Vehicles ready for a detail</h2>
+        <p class="sub" data-i18n="board.sub">Approved Founding Dealers may sign in and claim an early vehicle preview for $25. The seller’s private contact remains locked behind a separate $125 lead purchase.</p>
+      </div>
+      <p class="preview-refresh" id="previewRefresh" data-i18n="board.loading">Loading current vehicles…</p>
+    </div>
+    <div id="publicPreviews" class="lead-list"></div>
+  </div>
+</section>
+
 <!-- FOUNDING DEALER PORTAL -->
 <section class="dealer-portal" id="dealer-portal">
   <div class="wrap">
     <p class="eyebrow" data-i18n="portal.eyebrow">Founding Dealer access</p>
-    <h2 data-i18n="portal.h2">Local seller leads</h2>
-    <p class="sub" data-i18n="portal.sub">Sign in using your approved Founding Dealer email. Review masked vehicle leads free, then pay $25 to unlock a seller’s contact information.</p>
+    <h2 data-i18n="portal.h2">Claim previews. Purchase protected leads.</h2>
+    <p class="sub" data-i18n="portal.sub">Sign in using your approved Founding Dealer email. Claim an early vehicle preview for $25. Customer contact information stays sealed until the separate $125 lead purchase is confirmed.</p>
     <div class="portal-card">
       <form id="dealerLoginForm" class="portal-login">
         <div class="field"><label for="portal-email" data-i18n="portal.email">Founding Dealer email</label><input id="portal-email" type="email" required autocomplete="email"></div>
@@ -379,9 +400,9 @@ footer a{color:#B9CCDA;text-decoration:none}
     <div class="card">
       <p class="eyebrow" data-i18n="fp.eyebrow">Limited to early markets</p>
       <h2 data-i18n="fp.h2">Become a Founding Partner</h2>
-      <p class="sub" data-i18n-html="fp.sub">Founding Partners get <b>first notification the moment a detail completes</b> in their area — before the broader dealer network sees the vehicle. First look means first call on the freshest local inventory.</p>
+      <p class="sub" data-i18n-html="fp.sub">Founding Dealers receive <b>email and text alerts when a private vehicle submission is ready for preview</b>. Alerts never include customer contact information.</p>
       <div class="perks">
-        <span class="perk" data-i18n="fp.perk1">First notification on completed details</span>
+        <span class="perk" data-i18n="fp.perk1">Email and text vehicle alerts</span>
         <span class="perk" data-i18n="fp.perk2">Priority in your market</span>
         <span class="perk" data-i18n="fp.perk3">Founding rate locked in</span>
       </div>
@@ -397,6 +418,8 @@ footer a{color:#B9CCDA;text-decoration:none}
             <select id="fp-radius" name="notifyRadiusMiles"><option>10</option><option selected>25</option><option>50</option><option>100</option></select></div>
           <div class="field"><label for="fp-city"><span data-i18n="lbl.city">City</span> <span class="req">*</span></label><input type="text" id="fp-city" name="city" autocomplete="address-level2" required></div>
           <div class="field"><label for="fp-state"><span data-i18n="lbl.state">State</span> <span class="req">*</span></label><input type="text" id="fp-state" name="state" autocomplete="address-level1" required></div>
+          <div class="field full"><label class="check"><input id="fp-email-alerts" type="checkbox" checked><span data-i18n="fp.emailAlerts">Email me non-contact vehicle alerts in my area.</span></label></div>
+          <div class="field full"><label class="check"><input id="fp-sms-alerts" type="checkbox"><span data-i18n="fp.smsAlerts">Text me non-contact vehicle alerts. I consent to automated texts from Free Auto Detail; message and data rates may apply. Reply STOP to opt out.</span></label></div>
         </div>
         <div class="form-actions"><button class="btn btn-amber" type="submit" data-i18n="fp.btn">Claim Founding Partner status</button></div>
         <div class="form-msg" role="status" aria-live="polite"></div>
@@ -410,7 +433,7 @@ footer a{color:#B9CCDA;text-decoration:none}
   <div class="wrap">
     <p class="eyebrow" data-i18n="dl.eyebrow">For auto dealers</p>
     <h2 data-i18n="dl.h2">Dealer signup</h2>
-    <p class="sub" data-i18n="dl.sub">Get notified when local sellers complete a detail near you. Inspect at your shop, buy what you like, and pay only when a deal closes: the detail ($150–$300) plus our $150 referral fee.</p>
+    <p class="sub" data-i18n="dl.sub">See non-contact vehicle previews in your area. Claim early access for $25, then choose whether the protected customer lead is worth the separate $125 fee.</p>
     <form id="dealerForm" novalidate>
       <div class="form-grid">
         <div class="field"><label for="d-biz"><span data-i18n="lbl.dealership">Dealership name</span> <span class="req">*</span></label><input type="text" id="d-biz" name="dealershipName" autocomplete="organization" required></div>
@@ -466,7 +489,7 @@ footer a{color:#B9CCDA;text-decoration:none}
     <h2 data-i18n="tm.h2">The fine print, in plain English</h2>
     <ul>
       <li data-i18n-html="tm.1"><b>Card hold.</b> Sellers authorize a hold equal to the detail price for 30 days. Trade in or sell to a participating dealer within 30 days and the hold is released — the buying dealer pays the detail. Otherwise the hold captures and the seller pays for their detail.</li>
-      <li data-i18n-html="tm.2"><b>Dealer fees.</b> Participating dealers pay only when a deal closes: the actual detail price ($150–$300) plus a $150 FreeAutoDetail referral fee.</li>
+      <li data-i18n-html="tm.2"><b>Dealer access fees.</b> A $25 preview claim does not include customer information. The separate $125 protected-lead purchase unlocks the seller’s contact details for that approved dealer.</li>
       <li data-i18n-html="tm.3"><b>Shop requirements.</b> Participating detail shops must maintain current general liability insurance and a valid business license at all times.</li>
       <li data-i18n-html="tm.4"><b>Liability.</b> FreeAutoDetail.com is a referral and notification platform. It does not perform detailing services and is not responsible for damages incurred at participating detail shops. Claims for on-site damage are handled by the shop and its liability insurance.</li>
       <li data-i18n-html="tm.5"><b>No purchase obligation.</b> Dealers are never obligated to buy, and sellers are never obligated to sell. The 30-day window simply decides who pays for the detail.</li>
@@ -486,6 +509,7 @@ footer a{color:#B9CCDA;text-decoration:none}
 const I18N = {
   "nav.how":{es:"Cómo funciona"},
   "nav.sellers":{es:"Vendedores"},
+  "nav.board":{es:"Vehículos disponibles"},
   "nav.math":{es:"Los números"},
   "nav.dealers":{es:"Concesionarios"},
   "nav.shops":{es:"Talleres"},
@@ -508,18 +532,18 @@ const I18N = {
   "how.h2":{es:"Cómo funciona"},
   "step1.t":{es:"El vendedor reserva un detailing sin costo"},
   "step1.d":{es:"Un propietario local que planea vender o entregar su auto reserva un detailing completo en un taller participante. Una retención en su tarjeta de crédito cubre el precio del detailing por 30 días."},
-  "step2.t":{es:"El detailing se completa"},
-  "step2.d":{es:"El taller realiza su detailing completo habitual. Los concesionarios Socios Fundadores reciben la primera notificación al instante — año, marca, modelo y zona."},
+  "step2.t":{es:"Registro privado y vista previa segura"},
+  "step2.d":{es:"El contacto del cliente permanece protegido en Supabase. Los Concesionarios Fundadores reciben alertas por correo y texto solo con año, marca, modelo y zona general."},
   "step3.t":{es:"El concesionario inspecciona localmente"},
   "step3.d":{es:"Los concesionarios interesados invitan al vendedor. Usted inspecciona un auto recién detallado en su propio taller, en su propio elevador, bajo sus propios términos."},
-  "step4.t":{es:"Se cierra el trato, paga el concesionario"},
-  "step4.d":{es:"Si el vendedor vende o entrega el auto a un concesionario participante dentro de 30 días, ese concesionario paga el detailing más una comisión de referido de $150. La retención del vendedor se libera."},
+  "step4.t":{es:"El concesionario elige el acceso"},
+  "step4.d":{es:"Un concesionario aprobado puede reclamar la vista previa por $25. El prospecto protegido cuesta $125 por separado y es el único paso que desbloquea el contacto."},
   "how.hold":{es:"<b>Si no hay trato en 30 días:</b> la retención en la tarjeta del vendedor cobra el precio del detailing, el taller recibe su pago completo y el vendedor conserva un auto profesionalmente detallado. Nadie se queda sin pago."},
 
   "sl.eyebrow":{es:"Para vendedores locales"},
   "sl.h2":{es:"¿Vende su vehículo?"},
-  "sl.sub":{es:"Cuéntenos sobre su vehículo. Lo conectamos de forma segura con hasta tres Concesionarios Fundadores aprobados en su zona. Solo verán el vehículo y la ubicación general hasta pagar la tarifa de acceso de $25."},
-  "sl.consent":{es:"Autorizo a Free Auto Detail a compartir mi información de contacto con hasta tres Concesionarios Fundadores aprobados después de que cada uno pague para desbloquear el prospecto. Pueden aplicar tarifas normales de llamadas o mensajes."},
+  "sl.sub":{es:"Cuéntenos sobre su vehículo. Su nombre, teléfono, correo, código postal exacto, millaje y notas permanecen protegidos en Supabase. Solo el tipo de vehículo y la zona general aparecen en el tablero."},
+  "sl.consent":{es:"Autorizo a Free Auto Detail a guardar mis datos de forma privada, publicar una vista previa sin contacto y entregar mis datos a no más de tres concesionarios aprobados únicamente después de que cada uno pague la tarifa separada de $125."},
   "sl.submit":{es:"Enviar mi vehículo de forma segura"},
   "lbl.first":{es:"Nombre *"},
   "lbl.last":{es:"Apellido *"},
@@ -532,8 +556,12 @@ const I18N = {
   "lbl.timeline":{es:"¿Cuándo piensa vender o entregar el vehículo?"},
   "lbl.notesVehicle":{es:"Notas del vehículo"},
   "portal.eyebrow":{es:"Acceso para Concesionarios Fundadores"},
-  "portal.h2":{es:"Prospectos locales de vendedores"},
-  "portal.sub":{es:"Inicie sesión con el correo aprobado de su concesionario. Revise gratis los datos limitados del vehículo y pague $25 para desbloquear el contacto del vendedor."},
+  "board.eyebrow":{es:"Sin información de contacto del cliente"},
+  "board.h2":{es:"Vehículos listos para un detailing"},
+  "board.sub":{es:"Los Concesionarios Fundadores aprobados pueden reclamar una vista previa por $25. El contacto privado del vendedor requiere una compra separada de $125."},
+  "board.loading":{es:"Cargando vehículos actuales…"},
+  "portal.h2":{es:"Reclame vistas previas. Compre prospectos protegidos."},
+  "portal.sub":{es:"Inicie sesión con el correo aprobado de su concesionario. Reclame una vista previa por $25. El contacto permanece protegido hasta confirmar la compra separada de $125."},
   "portal.email":{es:"Correo del Concesionario Fundador"},
   "portal.login":{es:"Enviarme un enlace seguro"},
 
@@ -567,15 +595,17 @@ const I18N = {
 
   "fp.eyebrow":{es:"Limitado a los primeros mercados"},
   "fp.h2":{es:"Conviértase en Socio Fundador"},
-  "fp.sub":{es:"Los Socios Fundadores reciben <b>la primera notificación en cuanto se completa un detailing</b> en su zona — antes de que la red general de concesionarios vea el vehículo. Ver primero significa llamar primero por el inventario local más fresco."},
-  "fp.perk1":{es:"Primera notificación de detailings completados"},
+  "fp.sub":{es:"Los Concesionarios Fundadores reciben <b>alertas por correo y texto cuando un vehículo privado está listo para vista previa</b>. Las alertas nunca incluyen el contacto del cliente."},
+  "fp.perk1":{es:"Alertas de vehículos por correo y texto"},
   "fp.perk2":{es:"Prioridad en su mercado"},
   "fp.perk3":{es:"Tarifa fundadora garantizada"},
   "fp.btn":{es:"Reclamar estatus de Socio Fundador"},
+  "fp.emailAlerts":{es:"Enviarme alertas de vehículos sin contacto por correo."},
+  "fp.smsAlerts":{es:"Enviarme alertas de vehículos sin contacto por texto. Acepto mensajes automatizados; pueden aplicar tarifas. Responda STOP para cancelar."},
 
   "dl.eyebrow":{es:"Para concesionarios"},
   "dl.h2":{es:"Registro de concesionarios"},
-  "dl.sub":{es:"Reciba notificaciones cuando vendedores locales completen un detailing cerca de usted. Inspeccione en su taller, compre lo que le convenga y pague solo cuando se cierre el trato: el detailing ($150–$300) más nuestra comisión de referido de $150."},
+  "dl.sub":{es:"Vea vistas previas sin contacto en su zona. Reclame acceso anticipado por $25 y luego decida si el prospecto protegido vale la tarifa separada de $125."},
   "dl.btn":{es:"Solicitar como concesionario"},
 
   "sh.eyebrow":{es:"Para talleres de detailing"},
@@ -610,7 +640,7 @@ const I18N = {
 
   "tm.h2":{es:"La letra pequeña, en lenguaje claro"},
   "tm.1":{es:"<b>Retención en la tarjeta.</b> Los vendedores autorizan una retención igual al precio del detailing por 30 días. Si venden o entregan el auto a un concesionario participante dentro de 30 días, la retención se libera — el concesionario comprador paga el detailing. De lo contrario, la retención se cobra y el vendedor paga su detailing."},
-  "tm.2":{es:"<b>Tarifas del concesionario.</b> Los concesionarios participantes pagan solo cuando se cierra un trato: el precio real del detailing ($150–$300) más una comisión de referido de $150 de FreeAutoDetail."},
+  "tm.2":{es:"<b>Tarifas de acceso.</b> Reclamar una vista previa por $25 no incluye información del cliente. La compra separada del prospecto protegido por $125 desbloquea el contacto para ese concesionario aprobado."},
   "tm.3":{es:"<b>Requisitos del taller.</b> Los talleres participantes deben mantener en todo momento un seguro de responsabilidad civil vigente y una licencia comercial válida."},
   "tm.4":{es:"<b>Responsabilidad.</b> FreeAutoDetail.com es una plataforma de referidos y notificaciones. No realiza servicios de detailing y no es responsable por daños ocurridos en los talleres participantes. Los reclamos por daños en el lugar los gestiona el taller y su seguro de responsabilidad civil."},
   "tm.5":{es:"<b>Sin obligación de compra.</b> Los concesionarios nunca están obligados a comprar, y los vendedores nunca están obligados a vender. La ventana de 30 días solo decide quién paga el detailing."},
@@ -688,7 +718,11 @@ function wire(formId, endpoint, map){
   });
 }
 const obj = fd => Object.fromEntries(fd.entries());
-wire('foundingForm','/api/signup/founding-partner', fd => obj(fd));
+wire('foundingForm','/api/signup/founding-partner', (fd, form) => ({
+  ...obj(fd),
+  emailAlerts: form.querySelector('#fp-email-alerts').checked,
+  smsAlerts: form.querySelector('#fp-sms-alerts').checked
+}));
 wire('dealerForm','/api/signup/dealer', fd => obj(fd));
 wire('shopForm','/api/signup/detail-shop', (fd, form) => ({
   ...obj(fd),
@@ -701,6 +735,57 @@ wire('sellerForm','/api/signup/seller', (fd, form) => ({
   consentToContact: form.querySelector('#sl-consent').checked
 }));
 
+/* ---------------- Safe public vehicle board ---------------- */
+const publicPreviews = document.getElementById('publicPreviews');
+const previewRefresh = document.getElementById('previewRefresh');
+
+function addLeadLine(card, label, value){
+  if (value === null || value === undefined || value === '') return;
+  const line = document.createElement('p');
+  const strong = document.createElement('strong');
+  strong.textContent = label + ': ';
+  line.append(strong, document.createTextNode(String(value)));
+  card.appendChild(line);
+}
+
+function vehicleCard(lead){
+  const card = document.createElement('article');
+  card.className = 'lead-card';
+  const title = document.createElement('h3');
+  title.textContent = `${lead.vehicleYear} ${lead.vehicleMake} ${lead.vehicleModel}`;
+  card.appendChild(title);
+  addLeadLine(card, 'General area', `${lead.city}, ${lead.state}`);
+  addLeadLine(card, 'Mileage range', lead.mileageBand);
+  addLeadLine(card, 'Condition', lead.vehicleCondition);
+  return card;
+}
+
+async function loadPublicPreviews(){
+  try {
+    const response = await fetch('/api/vehicle-previews');
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.message || 'Unable to load vehicles.');
+    publicPreviews.replaceChildren();
+    if (!payload.previews.length){
+      const empty = document.createElement('p');
+      empty.textContent = 'No vehicles are posted yet. New safe previews will appear here.';
+      publicPreviews.appendChild(empty);
+    } else {
+      payload.previews.forEach(preview => {
+        const card = vehicleCard(preview);
+        const privacy = document.createElement('div');
+        privacy.className = 'fee-path';
+        privacy.innerHTML = '<span class="fee-pill">No name</span><span class="fee-pill">No phone</span><span class="fee-pill">No email</span><span class="fee-pill">No exact ZIP</span>';
+        card.appendChild(privacy);
+        publicPreviews.appendChild(card);
+      });
+    }
+    previewRefresh.textContent = `Board updated ${new Date(payload.refreshedAt).toLocaleString()}`;
+  } catch (error) {
+    previewRefresh.textContent = error.message;
+  }
+}
+
 /* ---------------- Founding Dealer portal ---------------- */
 const DEALER_TOKEN_KEY = 'fad-dealer-token';
 const portalForm = document.getElementById('dealerLoginForm');
@@ -712,51 +797,66 @@ function setPortalMessage(message, ok = true){
   portalMsg.className = 'form-msg ' + (ok ? 'ok' : 'err');
 }
 
-function addLeadLine(card, label, value){
-  if (value === null || value === undefined || value === '') return;
-  const line = document.createElement('p');
-  const strong = document.createElement('strong');
-  strong.textContent = label + ': ';
-  line.append(strong, document.createTextNode(String(value)));
-  card.appendChild(line);
-}
-
 function renderDealerLeads(payload){
   dealerLeads.replaceChildren();
   if (!payload.leads.length){
     const empty = document.createElement('p');
-    empty.textContent = 'No matched seller leads are available yet.';
+    empty.textContent = 'No vehicle previews are available yet.';
     dealerLeads.appendChild(empty);
     return;
   }
   payload.leads.forEach(lead => {
-    const card = document.createElement('article');
-    card.className = 'lead-card';
-    const title = document.createElement('h3');
-    title.textContent = `${lead.vehicleYear} ${lead.vehicleMake} ${lead.vehicleModel}`;
-    card.appendChild(title);
-    addLeadLine(card, 'Area', `${lead.city}, ${lead.state} ${lead.paymentStatus === 'paid' ? lead.fullZipCode : lead.zipCode}`);
-    addLeadLine(card, 'Mileage', lead.mileage ? Number(lead.mileage).toLocaleString() : 'Not provided');
-    addLeadLine(card, 'Condition', lead.vehicleCondition);
+    const card = vehicleCard(lead);
     addLeadLine(card, 'Selling timeline', lead.sellTimeline);
-    if (lead.paymentStatus === 'paid'){
+    addLeadLine(card, 'Claims remaining', lead.claimsRemaining);
+    const fees = document.createElement('div');
+    fees.className = 'fee-path';
+    fees.innerHTML = '<span class="fee-pill">Early preview claim: $25</span><span class="fee-pill">Protected customer lead: $125</span>';
+    card.appendChild(fees);
+    if (lead.leadStatus === 'paid'){
       const contact = document.createElement('div');
       contact.className = 'lead-contact';
       addLeadLine(contact, 'Seller', `${lead.firstName} ${lead.lastName}`);
       addLeadLine(contact, 'Phone', lead.phone);
       addLeadLine(contact, 'Email', lead.email);
+      addLeadLine(contact, 'Exact ZIP', lead.fullZipCode);
+      addLeadLine(contact, 'Exact mileage', lead.mileage ? Number(lead.mileage).toLocaleString() : 'Not provided');
       addLeadLine(contact, 'Notes', lead.notes);
       card.appendChild(contact);
+    } else if (lead.claimStatus === 'paid') {
+      const lock = document.createElement('div');
+      lock.className = 'lead-lock';
+      const note = document.createElement('strong');
+      note.textContent = 'Preview claimed. Customer contact remains sealed.';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn btn-gloss';
+      button.textContent = 'Purchase protected lead — $125';
+      button.addEventListener('click', () => startCheckout('/api/dealer/lead-checkout', { claimId: lead.claimId }, button));
+      lock.append(note, button);
+      card.appendChild(lock);
+    } else if (lead.claimStatus === 'checkout_pending') {
+      const pending = document.createElement('div');
+      pending.className = 'lead-lock';
+      pending.textContent = 'Preview claim checkout is pending. You may restart it if payment was not completed.';
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn btn-amber';
+      button.textContent = 'Restart $25 claim';
+      button.addEventListener('click', () => startCheckout('/api/dealer/claim-checkout', { previewId: lead.previewId }, button));
+      pending.appendChild(button);
+      card.appendChild(pending);
     } else {
       const lock = document.createElement('div');
       lock.className = 'lead-lock';
       const note = document.createElement('strong');
-      note.textContent = 'Seller contact is locked';
+      note.textContent = 'Customer contact remains in the private vault';
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'btn btn-amber';
-      button.textContent = 'Unlock lead — $25';
-      button.addEventListener('click', () => startLeadCheckout(lead.matchId, button));
+      button.textContent = lead.claimsRemaining ? 'Claim early preview — $25' : 'Claims filled';
+      button.disabled = !lead.claimsRemaining;
+      button.addEventListener('click', () => startCheckout('/api/dealer/claim-checkout', { previewId: lead.previewId }, button));
       lock.append(note, button);
       card.appendChild(lock);
     }
@@ -780,14 +880,14 @@ async function loadDealerLeads(){
   }
 }
 
-async function startLeadCheckout(matchId, button){
+async function startCheckout(endpoint, body, button){
   const token = localStorage.getItem(DEALER_TOKEN_KEY);
   button.disabled = true;
   try {
-    const response = await fetch('/api/dealer/checkout', {
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ matchId })
+      body: JSON.stringify(body)
     });
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.message || 'Unable to start checkout.');
@@ -822,10 +922,15 @@ portalForm.addEventListener('submit', async event => {
     history.replaceState(null, document.title, location.pathname + location.search + '#dealer-portal');
   }
   if (new URLSearchParams(location.search).get('lead_payment') === 'success'){
-    setPortalMessage('Payment received. Your seller contact will unlock as soon as Stripe confirms it.');
+    setPortalMessage('$125 lead payment received. Customer contact will unlock after Stripe confirms it.');
+  }
+  if (new URLSearchParams(location.search).get('preview_payment') === 'success'){
+    setPortalMessage('$25 preview claim received. The customer remains private until a separate $125 lead purchase.');
   }
   loadDealerLeads();
 })();
+
+loadPublicPreviews();
 
 /* ---------------- installable app ---------------- */
 if ('serviceWorker' in navigator) {
